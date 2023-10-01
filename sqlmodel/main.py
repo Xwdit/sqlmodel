@@ -474,6 +474,7 @@ def get_sqlalchemy_type(field: FieldInfo) -> Any:
         if type2 is pydantic.AnyUrl:
             meta = get_args(type_)[1]
             return AutoString(length=meta.max_length)
+        type_ = type2
     elif org_type is pydantic.AnyUrl and type(type_) is _AnnotatedAlias:
         return AutoString(type_.__metadata__[0].max_length)
 
